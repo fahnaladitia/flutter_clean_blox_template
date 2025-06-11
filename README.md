@@ -17,6 +17,7 @@ Created with ❤️ by [**Pahnal Aditia**](https://www.linkedin.com/in/pahnaladi
     - [🔧 Setup Instructions](#-setup-instructions)
       - [1. Project \& Package Name](#1-project--package-name)
       - [2. App Links \& Universal Links](#2-app-links--universal-links)
+      - [3. Firebase Setup](#3-firebase-setup)
     - [▶️ Run the App](#️-run-the-app)
     - [For Android APK build](#for-android-apk-build)
     - [For iOS build (Note: requires macOS)](#for-ios-build-note-requires-macos)
@@ -33,6 +34,7 @@ Created with ❤️ by [**Pahnal Aditia**](https://www.linkedin.com/in/pahnaladi
 * 🔌 **Dependency Injection** — Managed with [`get_it`](https://pub.dev/packages/get_it)
 * 🌍 **Localization** — Multilingual support via [`intl`](https://pub.dev/packages/intl)
 * 🛡 **Error Tracking** — Integrated [`sentry_flutter`](https://pub.dev/packages/sentry_flutter)
+* 🔥 **Firebase Integration** — Analytics & Crashlytics support for all flavors
 * 🔗 **Deep & App Links** — Configured using [`go_router`](https://pub.dev/packages/go_router)
 * 🖼 **UI Tools** — [`flutter_launcher_icons`](https://pub.dev/packages/flutter_launcher_icons), [`flutter_native_splash`](https://pub.dev/packages/flutter_native_splash)
 * 🧪 **Flavor Support** — Predefined build flavors:
@@ -51,16 +53,18 @@ Created with ❤️ by [**Pahnal Aditia**](https://www.linkedin.com/in/pahnaladi
 
 ## 🧰 Tech Stack
 
-| Category                | Packages                                                                                                                                                                    |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🧠 State Management     | [`flutter_bloc`](https://pub.dev/packages/flutter_bloc)                                                                                                                     |
-| 🌐 Networking           | [`dio`](https://pub.dev/packages/dio), [`cote_network_logger`](https://pub.dev/packages/cote_network_logger), [`chucker_flutter`](https://pub.dev/packages/chucker_flutter) |
-| 🔌 Dependency Injection | [`get_it`](https://pub.dev/packages/get_it)                                                                                                                                 |
-| 🌍 Localization         | [`intl`](https://pub.dev/packages/intl)                                                                                                                                     |
-| 🔗 Routing & Deep Links | [`go_router`](https://pub.dev/packages/go_router)                                                                                                                           |
-| 🛡 Error Tracking       | [`sentry_flutter`](https://pub.dev/packages/sentry_flutter)                                                                                                                 |
-| 🖼 UI Assets            | [`flutter_launcher_icons`](https://pub.dev/packages/flutter_launcher_icons), [`flutter_native_splash`](https://pub.dev/packages/flutter_native_splash)                      |
-| 🧪 Flavoring Support    | Manual setup using `productFlavors`                                                                                                                                         |
+| Category                | Packages                                                                                                                                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🧠 State Management     | [`flutter_bloc`](https://pub.dev/packages/flutter_bloc)                                                                                                                                                 |
+| 🌐 Networking           | [`dio`](https://pub.dev/packages/dio), [`cote_network_logger`](https://pub.dev/packages/cote_network_logger), [`chucker_flutter`](https://pub.dev/packages/chucker_flutter)                             |
+| 🔌 Dependency Injection | [`get_it`](https://pub.dev/packages/get_it)                                                                                                                                                             |
+| 🌍 Localization         | [`intl`](https://pub.dev/packages/intl)                                                                                                                                                                 |
+| 🔗 Routing & Deep Links | [`go_router`](https://pub.dev/packages/go_router)                                                                                                                                                       |
+| 🛡 Error Tracking       | [`sentry_flutter`](https://pub.dev/packages/sentry_flutter)                                                                                                                                             |
+| 🔥 Firebase             | [`firebase_core`](https://pub.dev/packages/firebase_core), [`firebase_analytics`](https://pub.dev/packages/firebase_analytics), [`firebase_crashlytics`](https://pub.dev/packages/firebase_crashlytics) |
+| 🖼 UI Assets            | [`flutter_launcher_icons`](https://pub.dev/packages/flutter_launcher_icons), [`flutter_native_splash`](https://pub.dev/packages/flutter_native_splash)                                                  |
+| 🧪 Flavoring Support    | Manual setup using `productFlavors`, Xcode Schemes, and build phase scripting                                                                                                                           |
+
 
 ---
 
@@ -74,6 +78,7 @@ lib/
 ├── domain/                # Use cases, models, repositories
 ├── presentation/          # Pages, widgets, blocs, themes
 ├── l10n/                  # Localization files
+├── firebase_options.dart # Firebase options
 ├── main_staging.dart      # Main entry for staging
 └── main_production.dart   # Main entry for production
 ```
@@ -99,6 +104,9 @@ See [SETUP.md](SETUP.md) for how to manually configure your project’s package 
 #### 2. App Links & Universal Links
 
 To enable Android and iOS deep linking, follow [APPLINKS.md](APPLINKS.md).
+
+#### 3. Firebase Setup
+See [FIREBASE.md](FIREBASE.md) for how to configure Firebase for your project.
 
 ---
 
@@ -162,6 +170,6 @@ flutter build ipa --obfuscate --split-debug-info=out/android --flavor production
 ## 🧪 Coming Soon
 
 * [ ] ✅ **Unit & Widget Testing** — With [`flutter_test`](https://pub.dev/packages/flutter_test) & [`mocktail`](https://pub.dev/packages/mocktail)
-* [ ] ✅ **Firebase Integration** — Analytics, Auth, Firestore, Crashlytics
+* [ ] ✅ **Firebase Integration** — Auth, Firestore, and more
 * [ ] ✅ **Push Notification Setup** — With Firebase Cloud Messaging
 

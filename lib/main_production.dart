@@ -1,10 +1,16 @@
+import 'dart:io';
+
 import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:cote_network_logger/cote_network_logger.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_blox_template/core/di/injection.dart';
 import 'package:flutter_clean_blox_template/presentation/utils/simple_observer.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 // import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'app/my_app.dart';
@@ -16,14 +22,27 @@ import 'app/my_app.dart';
 /// =========================================================
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  if (Platform.isIOS) {
+    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  }
 
   // Running Cote Network Logger
   await startNetworkLogServer();
 
+  // === START FIREBASE ===
+
+  await Firebase.initializeApp();
+
+  await FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(kReleaseMode);
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+
+  // === END FIREBASE ===
+
   // Chucker Flutter
-  ChuckerFlutter.showOnRelease =
-      kDebugMode; // Show Chucker only in debug mode, if you want to see it in release mode, set to true
+  ChuckerFlutter.showOnRelease = false;
 
   // Initialize dependency injection
   const String baseURL =
