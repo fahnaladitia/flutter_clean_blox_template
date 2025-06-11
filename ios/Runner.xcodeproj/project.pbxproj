@@ -51,6 +51,8 @@
 		3A5E3A301058096ECD898455 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		492C8FACDFF1FE7C27296316 /* Pods-RunnerTests.release-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release-staging.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release-staging.xcconfig"; sourceTree = "<group>"; };
+		526E905C2DF9D49500B64E1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		526E905E2DF9D49500B64E1D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		564567E294542CE3374BF33A /* Pods-Runner.profile-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-staging.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-staging.xcconfig"; sourceTree = "<group>"; };
 		66EF08A4585507E64CDA5A5C /* Pods-RunnerTests.debug-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug-staging.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug-staging.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -107,6 +109,31 @@
 			path = RunnerTests;
 			sourceTree = "<group>";
 		};
+		526E905D2DF9D49500B64E1D /* production */ = {
+			isa = PBXGroup;
+			children = (
+				526E905C2DF9D49500B64E1D /* GoogleService-Info.plist */,
+			);
+			path = production;
+			sourceTree = "<group>";
+		};
+		526E905F2DF9D49500B64E1D /* staging */ = {
+			isa = PBXGroup;
+			children = (
+				526E905E2DF9D49500B64E1D /* GoogleService-Info.plist */,
+			);
+			path = staging;
+			sourceTree = "<group>";
+		};
+		526E90602DF9D49500B64E1D /* config */ = {
+			isa = PBXGroup;
+			children = (
+				526E905D2DF9D49500B64E1D /* production */,
+				526E905F2DF9D49500B64E1D /* staging */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
 		777F60538023BEBDD0CF4108 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +163,7 @@
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				C327C92F58E881FA640053A1 /* Pods */,
 				777F60538023BEBDD0CF4108 /* Frameworks */,
+				526E90602DF9D49500B64E1D /* config */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +245,7 @@
 				5B0E97D47FDF1E1B0D3C3990 /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
+				526E90632DF9D96F00B64E1D /* Copy GoogleService-Info.plist */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
@@ -307,7 +336,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin\n";
+		};
+		526E90632DF9D96F00B64E1D /* Copy GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy GoogleService-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Script to copy the correct GoogleService-Info.plist based on build configuration\necho \"Running GoogleService-Info.plist flavor script\"\n\ncase \"${CONFIGURATION}\" in\n  Debug-staging)\n    cp \"${PROJECT_DIR}/config/staging/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n    ;;\n  Debug-production)\n    cp \"${PROJECT_DIR}/config/production/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n    ;;\n  Release-staging)\n    cp \"${PROJECT_DIR}/config/staging/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n    ;;\n  Release-production)\n    cp \"${PROJECT_DIR}/config/production/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n    ;;\nesac\n";
 		};
 		5B0E97D47FDF1E1B0D3C3990 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -482,7 +529,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Clean BLoX";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -563,7 +610,7 @@
 			};
 			name = Profile;
 		};
-		52EE248E2DF97D15008D114C /* Debug-Staging */ = {
+		52EE248E2DF97D15008D114C /* Debug-staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -617,13 +664,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox.staging;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = "Debug-Staging";
+			name = "Debug-staging";
 		};
-		52EE248F2DF97D15008D114C /* Debug-Staging */ = {
+		52EE248F2DF97D15008D114C /* Debug-staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
@@ -645,9 +692,9 @@
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Debug-Staging";
+			name = "Debug-staging";
 		};
-		52EE24902DF97D15008D114C /* Debug-Staging */ = {
+		52EE24902DF97D15008D114C /* Debug-staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 66EF08A4585507E64CDA5A5C /* Pods-RunnerTests.debug-staging.xcconfig */;
 			buildSettings = {
@@ -663,9 +710,9 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Debug-Staging";
+			name = "Debug-staging";
 		};
-		52EE24912DF97D21008D114C /* Debug-Production */ = {
+		52EE24912DF97D21008D114C /* Debug-production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -719,13 +766,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = "Debug-Production";
+			name = "Debug-production";
 		};
-		52EE24922DF97D21008D114C /* Debug-Production */ = {
+		52EE24922DF97D21008D114C /* Debug-production */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
@@ -747,9 +794,9 @@
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Debug-Production";
+			name = "Debug-production";
 		};
-		52EE24932DF97D21008D114C /* Debug-Production */ = {
+		52EE24932DF97D21008D114C /* Debug-production */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D159B39FC1F557CA7E5D72F4 /* Pods-RunnerTests.debug-production.xcconfig */;
 			buildSettings = {
@@ -765,9 +812,9 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Debug-Production";
+			name = "Debug-production";
 		};
-		52EE24942DF97D2C008D114C /* Release-Staging */ = {
+		52EE24942DF97D2C008D114C /* Release-staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -814,7 +861,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Clean BLoX Stg";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox.staging;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -822,9 +869,9 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Release-Staging";
+			name = "Release-staging";
 		};
-		52EE24952DF97D2C008D114C /* Release-Staging */ = {
+		52EE24952DF97D2C008D114C /* Release-staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -845,9 +892,9 @@
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Release-Staging";
+			name = "Release-staging";
 		};
-		52EE24962DF97D2C008D114C /* Release-Staging */ = {
+		52EE24962DF97D2C008D114C /* Release-staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 492C8FACDFF1FE7C27296316 /* Pods-RunnerTests.release-staging.xcconfig */;
 			buildSettings = {
@@ -861,9 +908,9 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Release-Staging";
+			name = "Release-staging";
 		};
-		52EE24972DF97D38008D114C /* Release-Production */ = {
+		52EE24972DF97D38008D114C /* Release-production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -910,7 +957,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Clean BLoX";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -918,9 +965,9 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Release-Production";
+			name = "Release-production";
 		};
-		52EE24982DF97D38008D114C /* Release-Production */ = {
+		52EE24982DF97D38008D114C /* Release-production */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -941,9 +988,9 @@
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Release-Production";
+			name = "Release-production";
 		};
-		52EE24992DF97D38008D114C /* Release-Production */ = {
+		52EE24992DF97D38008D114C /* Release-production */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6A17E9571FE5B65F4160D8F /* Pods-RunnerTests.release-production.xcconfig */;
 			buildSettings = {
@@ -957,9 +1004,9 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Release-Production";
+			name = "Release-production";
 		};
-		52EE249A2DF97D3F008D114C /* Profile-Staging */ = {
+		52EE249A2DF97D3F008D114C /* Profile-staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1006,15 +1053,15 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Clean BLoX Stg";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox.staging;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Profile-Staging";
+			name = "Profile-staging";
 		};
-		52EE249B2DF97D3F008D114C /* Profile-Staging */ = {
+		52EE249B2DF97D3F008D114C /* Profile-staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -1035,9 +1082,9 @@
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Profile-Staging";
+			name = "Profile-staging";
 		};
-		52EE249C2DF97D3F008D114C /* Profile-Staging */ = {
+		52EE249C2DF97D3F008D114C /* Profile-staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED53BD469187EFE204F952B8 /* Pods-RunnerTests.profile-staging.xcconfig */;
 			buildSettings = {
@@ -1051,9 +1098,9 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Profile-Staging";
+			name = "Profile-staging";
 		};
-		52EE249D2DF97D45008D114C /* Profile-Production */ = {
+		52EE249D2DF97D45008D114C /* Profile-production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1100,15 +1147,15 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Clean BLoX";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Profile-Production";
+			name = "Profile-production";
 		};
-		52EE249E2DF97D45008D114C /* Profile-Production */ = {
+		52EE249E2DF97D45008D114C /* Profile-production */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -1129,9 +1176,9 @@
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Profile-Production";
+			name = "Profile-production";
 		};
-		52EE249F2DF97D45008D114C /* Profile-Production */ = {
+		52EE249F2DF97D45008D114C /* Profile-production */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 947EC5DFC56E8AD5D09FFD01 /* Pods-RunnerTests.profile-production.xcconfig */;
 			buildSettings = {
@@ -1145,7 +1192,7 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
-			name = "Profile-Production";
+			name = "Profile-production";
 		};
 		97C147031CF9000F007C117D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1201,7 +1248,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1254,7 +1301,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Clean BLoX";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pahnal.cleanblox;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1318,14 +1365,14 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				331C8088294A63A400263BE5 /* Debug */,
-				52EE24932DF97D21008D114C /* Debug-Production */,
-				52EE24902DF97D15008D114C /* Debug-Staging */,
+				52EE24932DF97D21008D114C /* Debug-production */,
+				52EE24902DF97D15008D114C /* Debug-staging */,
 				331C8089294A63A400263BE5 /* Release */,
-				52EE24992DF97D38008D114C /* Release-Production */,
-				52EE24962DF97D2C008D114C /* Release-Staging */,
+				52EE24992DF97D38008D114C /* Release-production */,
+				52EE24962DF97D2C008D114C /* Release-staging */,
 				331C808A294A63A400263BE5 /* Profile */,
-				52EE249F2DF97D45008D114C /* Profile-Production */,
-				52EE249C2DF97D3F008D114C /* Profile-Staging */,
+				52EE249F2DF97D45008D114C /* Profile-production */,
+				52EE249C2DF97D3F008D114C /* Profile-staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1334,14 +1381,14 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97C147031CF9000F007C117D /* Debug */,
-				52EE24912DF97D21008D114C /* Debug-Production */,
-				52EE248E2DF97D15008D114C /* Debug-Staging */,
+				52EE24912DF97D21008D114C /* Debug-production */,
+				52EE248E2DF97D15008D114C /* Debug-staging */,
 				97C147041CF9000F007C117D /* Release */,
-				52EE24972DF97D38008D114C /* Release-Production */,
-				52EE24942DF97D2C008D114C /* Release-Staging */,
+				52EE24972DF97D38008D114C /* Release-production */,
+				52EE24942DF97D2C008D114C /* Release-staging */,
 				249021D3217E4FDB00AE95B9 /* Profile */,
-				52EE249D2DF97D45008D114C /* Profile-Production */,
-				52EE249A2DF97D3F008D114C /* Profile-Staging */,
+				52EE249D2DF97D45008D114C /* Profile-production */,
+				52EE249A2DF97D3F008D114C /* Profile-staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1350,14 +1397,14 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97C147061CF9000F007C117D /* Debug */,
-				52EE24922DF97D21008D114C /* Debug-Production */,
-				52EE248F2DF97D15008D114C /* Debug-Staging */,
+				52EE24922DF97D21008D114C /* Debug-production */,
+				52EE248F2DF97D15008D114C /* Debug-staging */,
 				97C147071CF9000F007C117D /* Release */,
-				52EE24982DF97D38008D114C /* Release-Production */,
-				52EE24952DF97D2C008D114C /* Release-Staging */,
+				52EE24982DF97D38008D114C /* Release-production */,
+				52EE24952DF97D2C008D114C /* Release-staging */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
-				52EE249E2DF97D45008D114C /* Profile-Production */,
-				52EE249B2DF97D3F008D114C /* Profile-Staging */,
+				52EE249E2DF97D45008D114C /* Profile-production */,
+				52EE249B2DF97D3F008D114C /* Profile-staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
