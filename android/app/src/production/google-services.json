@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "348588611795",
+    "project_id": "arczel-firebase-test",
+    "storage_bucket": "arczel-firebase-test.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348588611795:android:5e25abe3d50d3f03ab9c26",
+        "android_client_info": {
+          "package_name": "com.pahnal.cleanblox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348588611795-ompt0jntr146k9t80vvh26a02pocuucv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg2lpN-6NCfDg-S2Jead5xGhXm8TEnRRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348588611795-ompt0jntr146k9t80vvh26a02pocuucv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "348588611795-2dmlfp6um31kk28udsv6gu95ns92gp75.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pahnal.flutterFirebaseDev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348588611795:android:1c2591313a940071ab9c26",
+        "android_client_info": {
+          "package_name": "com.pahnal.cleanblox.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348588611795-83m45fkt2i61klhj95jeevdle2n7qiov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pahnal.cleanblox.staging",
+            "certificate_hash": "91b2afd8179e247723b76fa5975ea89ad99adc8b"
+          }
+        },
+        {
+          "client_id": "348588611795-ompt0jntr146k9t80vvh26a02pocuucv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg2lpN-6NCfDg-S2Jead5xGhXm8TEnRRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348588611795-ompt0jntr146k9t80vvh26a02pocuucv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "348588611795-2dmlfp6um31kk28udsv6gu95ns92gp75.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pahnal.flutterFirebaseDev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348588611795:android:0eea89b04d7cf924ab9c26",
+        "android_client_info": {
+          "package_name": "com.pahnal.flutter_firebase_dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348588611795-l3ug9im4j5ctt13r3hskvjc42vq89fp7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pahnal.flutter_firebase_dev",
+            "certificate_hash": "91b2afd8179e247723b76fa5975ea89ad99adc8b"
+          }
+        },
+        {
+          "client_id": "348588611795-ompt0jntr146k9t80vvh26a02pocuucv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg2lpN-6NCfDg-S2Jead5xGhXm8TEnRRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348588611795-ompt0jntr146k9t80vvh26a02pocuucv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "348588611795-2dmlfp6um31kk28udsv6gu95ns92gp75.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pahnal.flutterFirebaseDev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

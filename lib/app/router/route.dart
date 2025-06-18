@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:chucker_flutter/chucker_flutter.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:flutter_clean_blox_template/presentation/pages/main/main_page.dart';
@@ -33,7 +34,9 @@ class AppRoute {
     observers: [
       SentryNavigatorObserver(),
       ChuckerFlutter.navigatorObserver,
-      // Add any other observers if needed
+      FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
+      // Add any other observers you need here
+      // For example, you can add a custom observer for logging or analytics
     ],
     routes: [
       GoRoute(
