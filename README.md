@@ -46,6 +46,7 @@ Created with ❤️ by [**Pahnal Aditia**](https://www.linkedin.com/in/pahnaladi
 * ⚡ **Quick Start** — Minimal setup to begin development
 * 🔏 **Signed Android APK Support** — Pre-configured signing setup (`keystore` & `key.properties`) for Play Store release  
 * 🤖 **CI/CD with GitHub Actions** — Automated APK builds based on flavors (`staging`, `production`)
+* 🧪 **Testing Support** — Includes `flutter_test`, `mocktail`, `mockito`, and `bloc_test` for unit and widget testing
 
 
 
@@ -64,6 +65,8 @@ Created with ❤️ by [**Pahnal Aditia**](https://www.linkedin.com/in/pahnaladi
 | 🔥 Firebase             | [`firebase_core`](https://pub.dev/packages/firebase_core), [`firebase_analytics`](https://pub.dev/packages/firebase_analytics), [`firebase_crashlytics`](https://pub.dev/packages/firebase_crashlytics) |
 | 🖼 UI Assets            | [`flutter_launcher_icons`](https://pub.dev/packages/flutter_launcher_icons), [`flutter_native_splash`](https://pub.dev/packages/flutter_native_splash)                                                  |
 | 🧪 Flavoring Support    | Manual setup using `productFlavors`, Xcode Schemes, and build phase scripting                                                                                                                           |
+| CI/CD                   | GitHub Actions for automated APK builds                                                                                                        |
+| 🧪 Testing               | [`flutter_test`](https://pub.dev/packages/flutter_test), [`mockito`](https://pub.dev/packages/mockito),[`mocktail`](https://pub.dev/packages/mocktail),[`bloc_test`](https://pub.dev/packages/bloc_test),[`build_runner`](https://pub.dev/packages/build_runner)                                                                                                |
 
 
 ---
@@ -168,8 +171,6 @@ flutter build ipa --obfuscate --split-debug-info=out/android --flavor production
 ---
 
 ## 🧪 Coming Soon
-
-* [ ] ✅ **Unit & Widget Testing** — With [`flutter_test`](https://pub.dev/packages/flutter_test) & [`mocktail`](https://pub.dev/packages/mocktail)
 * [ ] ✅ **Firebase Integration** — Auth, Firestore, and more
 * [ ] ✅ **Push Notification Setup** — With Firebase Cloud Messaging
 
